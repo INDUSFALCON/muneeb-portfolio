@@ -2,6 +2,12 @@
 
 Newest entries appear first. This file records meaningful work only. Dates and implementation details are marked from available source/task evidence; no Git history is present in this project directory.
 
+## Development Session - 2026-11-23 — V2 mobile selected-project thumbnail sizing
+
+- Increased the vertical thumbnail area in stacked V2 selected-project cards on viewports up to 800px.
+- Scoped the change to `.landing-v2 .v2-project-list.project-stack.is-stacked`; desktop and V1 card layouts are unchanged.
+- Verified with `pnpm run build` (passes; existing bundle-size warning only).
+
 ## Development Session - 2026-11-23 — Git-connected production deployment
 
 - Added the GitHub remote `https://github.com/INDUSFALCON/muneeb-portfolio.git` and pushed commit `18800ee` to `main`.

@@ -320,3 +320,15 @@ body{min-width:0}
     margin-bottom:16px!important;
   }
 }
+/* V2 mobile selected-project cards: give the thumbnail more vertical presence. */
+@media(max-width:800px){
+  .landing-v2 .v2-project-list.project-stack.is-stacked .project-card>button{
+    height:320px!important;
+    min-height:320px!important;
+  }
+  .landing-v2 .v2-project-list.project-stack.is-stacked .project-card>button img{
+    height:100%!important;
+    min-height:0!important;
+    object-fit:cover;
+  }
+}
