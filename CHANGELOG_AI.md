@@ -2,6 +2,12 @@
 
 Newest entries appear first. This file records meaningful work only. Dates and implementation details are marked from available source/task evidence; no Git history is present in this project directory.
 
+## Development Session - 2026-11-23 — Git-connected production deployment
+
+- Added the GitHub remote `https://github.com/INDUSFALCON/muneeb-portfolio.git` and pushed commit `18800ee` to `main`.
+- Vercel automatically created production deployment `dpl_5MTqvZQPyTdABEKXCgQzqd3DmQvr` from that commit.
+- Deployment verified `READY` with the existing production alias `https://muneeb-portfolio-swart.vercel.app/`.
+
 ## Development Session - 2026-11-23 — Production deployment attempt
 
 - Confirmed the V2 eyebrow-label fix is documented and the production build passes.
