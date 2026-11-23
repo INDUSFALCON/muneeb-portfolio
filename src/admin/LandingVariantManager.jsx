@@ -1,0 +1,8 @@
+import {useEffect,useState} from 'react'
+import {loadLandingVariant,saveLandingVariant} from '../lib/landingVariant'
+export default function LandingVariantManager(){
+ const [value,setValue]=useState('legacy'),[busy,setBusy]=useState(true),[notice,setNotice]=useState('')
+ useEffect(()=>{loadLandingVariant().then(setValue).catch(()=>setNotice('Run the landing variant migration in Supabase before saving.')).finally(()=>setBusy(false))},[])
+ async function save(){setBusy(true);setNotice('');try{await saveLandingVariant(value);setNotice('Landing page selection saved.')}catch(e){setNotice(e.message||'Could not save selection.')}finally{setBusy(false)}}
+ return <section className="admin-panel landing-variant-manager"><div className="admin-page-heading"><div><span className="admin-eyebrow">APPEARANCE</span><h1>Landing page UI</h1><p>Choose which landing page experience visitors see. Your original design remains available.</p></div></div><div className="variant-options"><label className={value==='legacy'?'selected':''}><input type="radio" name="landing-variant" checked={value==='legacy'} onChange={()=>setValue('legacy')}/><span><strong>Original landing page</strong><small>Keep the current portfolio experience and all existing sections.</small></span></label><label className={value==='v2'?'selected':''}><input type="radio" name="landing-variant" checked={value==='v2'} onChange={()=>setValue('v2')}/><span><strong>New Figma landing page</strong><small>Use the new editorial dark layout and selected-work showcase.</small></span></label></div><button className="admin-button" disabled={busy} onClick={save}>{busy?'Loading…':'Save landing page'}</button>{notice&&<p className="admin-notice" role="status">{notice}</p>}</section>
+}

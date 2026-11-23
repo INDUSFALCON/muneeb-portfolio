@@ -1,0 +1,9 @@
+node_modules
+dist
+.pnpm-store
+.git
+.env*
+*.log
+supabase
+ADMIN_SETUP.md
+start-local.cmd
