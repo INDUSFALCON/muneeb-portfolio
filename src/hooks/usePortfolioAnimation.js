@@ -16,16 +16,18 @@ export function usePortfolioAnimation(scope, projectKey) {
       if (!stack) return
       const cards = gsap.utils.toArray('.project-card', stack)
       if (cards.length < 2) return
+      const isMobile = window.innerWidth <= 800
       stack.classList.add('is-stacked')
       gsap.set(cards, {zIndex:i=>i+1, transformOrigin:'50% 0%',filter:'brightness(1)'})
       gsap.set(cards.slice(1), {yPercent:115,autoAlpha:0})
       cards.forEach((card,i)=>{card.inert=i!==0})
+      const cardScrollDistance = isMobile ? Math.min(window.innerHeight, 500) : window.innerHeight
       const timeline = gsap.timeline({
         defaults:{ease:'none'},
         scrollTrigger:{
           id:'portfolio-stack',trigger:stack,start:'top 110px',
-          end:()=>`+=${window.innerHeight*(cards.length-0.5)}`,
-          pin:true,pinSpacing:true,scrub:0.65,anticipatePin:1,invalidateOnRefresh:true,
+          end:()=>`+=${cardScrollDistance*(cards.length-0.5)}`,
+          pin:true,pinSpacing:true,scrub:isMobile?0.25:0.65,anticipatePin:1,invalidateOnRefresh:true,
           onUpdate:self=>{
             stack.dataset.progress=self.progress.toFixed(3)
             const active=Math.min(cards.length-1,Math.floor(self.progress*(cards.length-.5)+.3))
